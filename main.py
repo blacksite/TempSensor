@@ -8,6 +8,8 @@ import random
 if __name__ == '__main__':
     # This is the Publisher
     wait_interval = 30
+    BROKER_URL = "broker.mqttdashboard.com"
+    BROKER_PORT = 1883
 
     while True:
         temp_type = random.randint(0, 2)
@@ -21,7 +23,7 @@ if __name__ == '__main__':
             temp = 80 * random.random() + 20
 
         client = mqtt.Client()
-        client.connect("192.168.1.59", 1883, 60)
+        client.connect(BROKER_URL, BROKER_PORT)
         # client.publish("topic/test", "Hello world!")
         client.publish("temp", temp)
         client.disconnect()

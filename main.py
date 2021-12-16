@@ -8,7 +8,7 @@ import random
 if __name__ == '__main__':
     # This is the Publisher
     wait_interval = 30
-    BROKER_URL = "broker.mqttdashboard.com"
+    BROKER_URL = "3.65.154.195"
     BROKER_PORT = 1883
 
     while True:

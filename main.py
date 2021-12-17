@@ -11,6 +11,9 @@ if __name__ == '__main__':
     BROKER_URL = "3.65.154.195"
     BROKER_PORT = 1883
 
+    client = mqtt.Client()
+    client.connect(BROKER_URL, BROKER_PORT)
+
     while True:
         temp_type = random.randint(0, 2)
         temp = 0.0
@@ -21,12 +24,12 @@ if __name__ == '__main__':
             temp = 60 * random.random() + 20
         elif temp_type == 2:
             temp = 80 * random.random() + 20
-
-        client = mqtt.Client()
-        client.connect(BROKER_URL, BROKER_PORT)
-        # client.publish("topic/test", "Hello world!")
-        client.publish("temp", temp, qos=1)
-        client.disconnect()
-        time.sleep(wait_interval)
+        try:
+            # client.publish("topic/test", "Hello world!")
+            client.publish("temp", temp, qos=1)
+            client.disconnect()
+            time.sleep(wait_interval)
+        except Exception as e:
+            client.connect(BROKER_URL, BROKER_PORT)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

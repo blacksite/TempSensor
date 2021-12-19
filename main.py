@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     client = mqtt.Client()
     client.connect(BROKER_URL, BROKER_PORT)
+    client.loop_start()
 
     while True:
         temp_type = random.randint(0, 2)

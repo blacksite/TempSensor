@@ -8,7 +8,7 @@ import random
 if __name__ == '__main__':
     # This is the Publisher
     wait_interval = 30
-    BROKER_URL = "3.65.154.195"
+    BROKER_URL = "192.168.1.89"
     BROKER_PORT = 1883
 
     client = mqtt.Client()
